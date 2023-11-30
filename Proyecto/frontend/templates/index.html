@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Proyecto paradigma</title>
+
+        <link rel="stylesheet" href="../static/styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/app.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!--Titulo-->
+        <h1>Generos y Subgeneros musicales</h1>
+
+        <!-- Botones para cambiar el gráfico -->
+        <canvas id="myChart"></canvas>
+        <button onclick="cambiarGrafico('bar', 'generos')">Gráfico de Géneros</button>
+        <button onclick="cambiarGrafico('bar', 'subgenerospop')">Gráfico de Subgéneros de pop</button>
+        <button onclick="cambiarGrafico('bar','subgenerosrap')">Grafico de Subgéneros de Rap</button>
+        <button onclick="cambiarGrafico('bar','subgenerosrock')">Grafico de Subgeneros de Rock</button>
+        <button onclick="cambiarGrafico('bar','subgeneroslatin')">Grafico de Subgeneros de Latin</button>
+        <button onclick="cambiarGrafico('bar','subgenerosrb')">Grafico de Subgeneros de RB</button>
+        <button onclick="cambiarGrafico('bar','subgenerosedm')">Grafico de Subgeneros de EDM</button>
+
+        <!-- El div para mostrar la imagen del gráfico -->
+        <div id="graficoImagenDiv"></div>
+
+        <script>
+            function cambiarGrafico(tipo, categoria)
+            {
+                fetch(`/obtener_grafico_${categoria.toLowerCase()}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('graficoImagenDiv').innerHTML = `<img src="data:image/png;base64,${data.imagen_codificada}" alt="Gráfico de ${tipo}">`;
+                    })
+                    .catch(error => console.error('Error al obtener el gráfico:', error));
+            }
+        </script>
+    </body>
+</html>

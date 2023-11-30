@@ -1,0 +1,27 @@
+/*Titulo*/
+h1{
+    text-align: center; /*Centra el titulo*/
+    color: #333; /*Cambia el color del texto*/
+    text-decoration: underline; /*Agrega un subrayado al titulo*/
+    margin-top: 20px; /*Añade espacio en la parte superior del titulo*/
+}
+
+/*Botones*/
+button{
+    background-color: lightgrey; /*Color fondo del boton*/
+}
+
+/*Estilo para el grsfico fuera*/
+#graficoImagenDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /*Ajusta la altura según sea necesario*/
+    margin-top: 20px; /*Espacio superior*/
+}
+
+/*Estilo para el grsfico dentro*/
+#graficoImagenDiv img {
+    max-width: 100%; /*Ajusta el ancho máximo del gráfico*/
+    max-height: 100%; /*Ajusta la altura máxima del gráfico*/
+}
